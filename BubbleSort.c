@@ -1,23 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-static int swap_count = 0;
-static int cmp_count = 0;
-void swap(int *ua, int i, int j){
-    int temp = ua[i];
-    ua[i] = ua[j];
-    ua[j] = temp;
-    swap_count  ++;
-}
+#include "common.h"
 
-// If i < j, return 0
-int compare_little(int i, int j){
-    cmp_count  ++;
-    if (i < j) {
-        return 0;
-    }
-    return 1;
-}
 
 //No swapping means aleady sorted/in-order
 void BubbleSort_2(int *ua,int len){
@@ -55,22 +40,6 @@ void BubbleSort(int *ua,int len){
     }
 }
 
-void printCmpCount(void) {
-    printf("cmp_count is %2d \n",cmp_count);
-    cmp_count = 0;
-}
-
-void printSwapCount(void) {
-    printf("swap_count is %2d \n",swap_count);
-    swap_count = 0;
-}
-
-void printArray(int *a, int len) {
-    for (int i=0; i<10; i++) {
-        printf("%2d ",a[i]);
-    }
-    printf("\n");
-}
 
 int main(){
     //int ua[10] = {10,9,8,7,6,5,4,3,2,1};

@@ -11,11 +11,13 @@ void swap(int *ua, int i, int j){
     swap_count  ++;
 }
 
-// If i < j, return 0
+// If i < j, return 0; return -1 when equal
 int compare_little(int i, int j){
     cmp_count  ++;
     if (i < j) {
         return 0;
+    } else if(i == j) {
+        return -1;
     }
     return 1;
 }

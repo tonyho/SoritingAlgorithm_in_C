@@ -3,7 +3,6 @@
 
 #include "common.h"
 
-
 //No swapping means aleady sorted/in-order
 void BubbleSort_2(int *ua,int len){
     int sorted = 1;

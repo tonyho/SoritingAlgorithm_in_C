@@ -10,12 +10,21 @@ void swap(int *ua, int i, int j){
     swap_count  ++;
 }
 
+// If i < j, return 0
+int compare_little(int i, int j){
+    cmp_count  ++;
+    if (i < j) {
+        return 0;
+    }
+    return 1;
+}
+
+//No swapping means aleady sorted/in-order
 void BubbleSort_2(int *ua,int len){
     int sorted = 1;
     for(int i=0; i<len; i++) {
         for(int j=len-1; j>=1+i; j--) {
-            cmp_count  ++;
-            if(ua[j] < ua[j-1]) {
+            if (0 == compare_little(ua[j], ua[j-1])) {
                 swap(ua, j, j-1);
                 sorted = 0;
             }
@@ -28,9 +37,8 @@ void BubbleSort_2(int *ua,int len){
 
 void BubbleSort_1(int *ua,int len){
     for(int i=0; i<len; i++) {
-        for(int j=len-1; j>=1+i; j--) {
-            cmp_count  ++;
-            if(ua[j] < ua[j-1]) {
+        for(int j=len-1; j>=1+i; j--) {// The i elements are already in order
+            if (0 == compare_little(ua[j], ua[j-1])) {
                 swap(ua, j, j-1);
             }
         }
@@ -40,7 +48,7 @@ void BubbleSort_1(int *ua,int len){
 void BubbleSort(int *ua,int len){
     for(int i=0; i<len; i++) {
         for(int j=len-1; j>=1; j--) {
-            if(ua[j] < ua[j-1]) {
+            if (0 == compare_little(ua[j], ua[j-1])) {
                 swap(ua, j, j-1);
             }
         }
@@ -69,13 +77,13 @@ int main(){
     int ua[10] = {10,7,9,7,6,5,4,3,2,1};
 
     printf("-----------------\n");
-    printf("Ori\n");
+    printf("Original array\n");
     printArray(ua, 10);
 
     //BubbleSort(ua,10);
     BubbleSort_1(ua,10);
 
-    printf("Sorted\n");
+    printf("Sorted array\n");
     printArray(ua, 10);
 
     printSwapCount();

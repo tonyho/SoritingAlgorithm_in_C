@@ -37,6 +37,18 @@ void InsertSort(int *ua,int len){
     }
 }
 
+void InsertSort_1(int *ua,int len){
+    for (int i=1; i<len; i++) {
+        int j = i -1;
+        int temp = ua[i];
+        while (compare_little(temp, ua[j]) == 0 && j>=0) {
+            moveBackForwad(ua, j);
+            j--;
+        }
+        ua[j+1] = temp;
+    }
+}
+
 int main(){
     //int ua[10] = {10,9,8,7,6,5,4,3,2,1};
     int ua[10] = {10,8,9,7,6,5,4,3,2,1};
@@ -46,7 +58,7 @@ int main(){
     printArray(ua, 10);
 
     //BubbleSort(ua,10);
-    InsertSort(ua,10);
+    InsertSort_1(ua,10);
 
     printf("Sorted array\n");
     printArray(ua, 10);

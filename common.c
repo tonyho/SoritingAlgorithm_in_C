@@ -9,17 +9,24 @@ void swap(int *ua, int i, int j){
     ua[i] = ua[j];
     ua[j] = temp;
     swap_count  ++;
+#ifdef SWAP_DEBUG_LOG
+    printf("swap %2d and %2d \n", i, j);
+#endif
 }
 
 // If i < j, return 0; return -1 when equal
 int compare_little(int i, int j){
+    int ret = 1;
     cmp_count  ++;
     if (i < j) {
-        return 0;
+        ret = 0;
     } else if(i == j) {
-        return -1;
+        ret = -1;
     }
-    return 1;
+#ifdef CMP_DEBUG_LOG
+    printf("cmp \t%2d and \t%2d , ret = \t%2d\n", i, j, ret);
+#endif
+    return ret;
 }
 
 void printCmpCount(void) {
